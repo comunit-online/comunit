@@ -100,7 +100,7 @@ module Comunit
 
       # @return [Agent]
       def agent
-        @agent ||= Agent.named(request.user_agent || 'n/a')
+        @agent ||= Agent.named(request.user_agent)
       end
 
       # @return [Hash]
