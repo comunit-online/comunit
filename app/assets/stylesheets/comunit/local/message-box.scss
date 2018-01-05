@@ -1,0 +1,67 @@
+@mixin message-box($background-color, $background-image, $color, $border-color) {
+  background: $background-color $background-image no-repeat 1.6rem 1.6rem / 1.6rem 1.6rem;
+  border: .1rem dashed $border-color;
+  color: $color;
+  margin: 0 1.6rem .8rem;
+  padding: 1.6rem 1.6rem 1.6rem 4.8rem;
+
+  p:first-of-type {
+    margin-top: 0;
+  }
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.message-box-notice {
+  @include message-box(#efe, image_url('biovision/base/icons/notice.svg'), #040, #ded);
+}
+
+.message-box-warning {
+  @include message-box(#ffe, image_url('biovision/base/icons/warning.svg'), #440, #eed);
+}
+
+.message-box-alert {
+  @include message-box(#fee, image_url('biovision/base/icons/alert.svg'), #400, #edd);
+}
+
+section.errors {
+  border: .1rem solid #edd;
+  margin: 1.6rem;
+  padding: 1.6rem;
+
+  > h2 {
+    color: #400;
+    font-size: $font-size-large;
+    padding: 1.6rem 1.6rem 1.6rem 4.8rem;
+  }
+
+  ol {
+    color: #700;
+  }
+}
+
+ol.errors {
+  background: #fee image_url('biovision/base/icons/alert.svg') no-repeat top 1rem left 1rem / 1.6rem 1.6rem;
+  box-shadow: .2rem .2rem .2rem 0 hsla(0, 75%, 50%, .5);
+  color: hsl(0, 75%, 50%);
+  margin: 1rem 1.6rem;
+  padding: 1rem 1rem 1rem 5.4rem;
+}
+
+.field_with_errors {
+  background: #fee;
+  display: inline-block;
+}
+
+span.not-found {
+  color: #faa;
+  cursor: default;
+
+  &:before {
+    color: #f00;
+    content: '\26A0';
+    margin-right: .4rem;
+  }
+}
