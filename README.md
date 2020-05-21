@@ -1,7 +1,5 @@
-Comunit::Local
-==============
-
-Всё, что нужно для поднятия «локальной» версии сайта сети `Comunit`.
+# Comunit
+Short description and motivation.
 
 ## Usage
 How to use my plugin.
@@ -10,7 +8,7 @@ How to use my plugin.
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'comunit-local'
+gem 'comunit'
 ```
 
 And then execute:
@@ -20,11 +18,11 @@ $ bundle
 
 Or install it yourself as:
 ```bash
-$ gem install comunit-local
+$ gem install comunit
 ```
 
 ## Contributing
 Contribution directions go here.
 
 ## License
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).

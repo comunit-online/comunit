@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 RSpec.configure do |config|
   config.expect_with :rspec do |expectations|
     expectations.include_chain_clauses_in_custom_matcher_descriptions = true
@@ -8,16 +10,11 @@ RSpec.configure do |config|
   end
 
   config.shared_context_metadata_behavior = :apply_to_host_groups
-
   config.filter_run_when_matching :focus
-
   config.example_status_persistence_file_path = "spec/examples.txt"
-
   config.disable_monkey_patching!
 
-  if config.files_to_run.one?
-    config.default_formatter = "doc"
-  end
+  config.default_formatter = "doc" if config.files_to_run.one?
 
   # config.profile_examples = 10
 
@@ -26,8 +23,6 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   config.after(:all) do
-    if Rails.env.test?
-      FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"])
-    end
+    FileUtils.rm_rf(Dir["#{Rails.root}/spec/support/uploads"]) if Rails.env.test?
   end
 end
