@@ -1,3 +1,4 @@
+require "comunit/version"
 require "comunit/engine"
 
 module Comunit
