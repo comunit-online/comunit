@@ -9,7 +9,7 @@ module Comunit
       def log(text, return_value = nil)
         file = "#{Rails.root}/log/network_manager.log"
         File.open(file, 'ab') do |f|
-          host = Handler.main_host? ? site&.host : 'comunit.online'
+          host = Handler.main_host? ? site&.host : 'main'
           f.puts "#{Time.now.strftime('%F %T')}\t#{host}\t#{text}"
         end
 

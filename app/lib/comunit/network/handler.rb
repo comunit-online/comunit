@@ -31,7 +31,7 @@ module Comunit
       end
 
       def self.host
-        Site[site_id]&.host || MAIN_HOST
+        Site[site_id]&.host || Biovision::Components::ComunitComponent.main_host
       end
 
       # Sets current site by signature
@@ -105,7 +105,7 @@ module Comunit
       end
 
       def host
-        site&.host || MAIN_HOST
+        site&.host || Biovision::Components::ComunitComponent.main_host
       end
 
       def site_id

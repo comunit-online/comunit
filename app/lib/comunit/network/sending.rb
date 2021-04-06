@@ -24,7 +24,7 @@ module Comunit
             log_warn('Site is inactive', 503)
           end
         else
-          rest_request(verb, "#{Handler::MAIN_HOST}/#{path}", data)
+          rest_request(verb, "#{Biovision::Components::ComunitComponent.main_host}/#{path}", data)
         end
       end
 
