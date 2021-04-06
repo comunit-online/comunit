@@ -12,7 +12,7 @@ module Biovision
 
       # @param [User] user
       def self.handle_new_user(user)
-        Comunit::Network::Handler.sync(user)
+        ::Comunit::Network::Handler.sync(user)
       end
 
       def self.main_host

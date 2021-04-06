@@ -3,6 +3,7 @@
 # Create tables for Comunit
 class CreateComunitComponent < ActiveRecord::Migration[6.1]
   def up
+    create_component
     create_sites unless Site.table_exists?
   end
 
