@@ -19,6 +19,6 @@ Rails.application.routes.draw do
   put 'comunit/:table_name/:uuid' => 'network#pull', as: nil
 
   namespace :admin do
-    resources :sites, concerns: :check
+    resources :sites, concerns: %i[check toggle]
   end
 end

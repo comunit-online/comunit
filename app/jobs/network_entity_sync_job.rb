@@ -13,13 +13,13 @@ class NetworkEntitySyncJob < ApplicationJob
     return if handler.nil?
 
     handler.entity = model_from_string(entity_class, entity_id)
-    push handler, site_id.to_s
+    push handler, site_id
   end
 
   private
 
   # @param [Comunit::Network::Handler] handler
-  # @param [String] site_id
+  # @param [String|nil] site_id
   def push(handler, site_id)
     if Comunit::Network::Handler.main_host?
       sites(site_id).each do |site|
