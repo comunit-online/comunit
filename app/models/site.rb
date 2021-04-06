@@ -30,7 +30,6 @@ class Site < ApplicationRecord
 
   mount_uploader :image, SimpleImageUploader
   validates_presence_of :host, :version
-  validates_length_of :description, maximum: DESCRIPTION_LIMIT
   validates_length_of :host, maximum: HOST_LIMIT
   validates_length_of :name, maximum: NAME_LIMIT
   validates_numericality_of :version, greater_than_or_equal_to: 0
