@@ -1,0 +1,14 @@
+<figure class="image"><%= simple_image_preview(entity) %></figure>
+<div class="data">
+  <div><%= admin_entity_link(entity) %></div>
+  <div class="info"><%= entity.name %></div>
+  <div class="secondary info"><%= entity.uuid %></div>
+
+  <%= render(partial: 'shared/admin/toggle', locals: { entity: entity }) %>
+
+  <div class="entity-actions">
+    <%= world_icon(entity) if entity.active? %>
+    <%= edit_icon(entity) %>
+    <%= destroy_icon(entity) %>
+  </div>
+</div>

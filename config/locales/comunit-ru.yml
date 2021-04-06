@@ -14,3 +14,27 @@ ru:
     signature:
       unknown_site: "Неизвестный сайт в подписи"
       invalid_signature: "Подпись недействительна"
+  admin:
+    sites:
+      destroy:
+        success: "Сайт удалён"
+      edit:
+        title: "Редактирование сайта"
+        nav_text: "Редактировать"
+        heading: "Редактирование сайта"
+      nav_item:
+        text: "Сайты"
+        description: "Управление сайтами"
+      new:
+        title: "Добавление сайта"
+        nav_text: "Создать"
+        heading: "Новый сайт"
+      index:
+        title: "Сайты сети, страница %{page}"
+        heading: "Сайты сети"
+      show:
+        title: "Сайт «%{host}»"
+    components:
+      comunit:
+        sync_state:
+          heading: "Состояние синхронизации"

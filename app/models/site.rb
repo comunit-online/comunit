@@ -28,7 +28,6 @@ class Site < ApplicationRecord
 
   has_secure_token
 
-  mount_uploader :image, SimpleImageUploader
   validates_presence_of :host, :version
   validates_length_of :host, maximum: HOST_LIMIT
   validates_length_of :name, maximum: NAME_LIMIT
@@ -58,6 +57,10 @@ class Site < ApplicationRecord
   end
 
   def text_for_link
+    host
+  end
+
+  def world_url
     host
   end
 end
