@@ -1,0 +1,16 @@
+ru:
+  activerecord:
+    models:
+      site: "Сайт"
+    attributes:
+      site:
+        active: "Активный"
+        local: "Локальный"
+        version: "Версия"
+        name: "Название"
+        host: "Хост"
+        token: "Жетон"
+  network:
+    signature:
+      unknown_site: "Неизвестный сайт в подписи"
+      invalid_signature: "Подпись недействительна"

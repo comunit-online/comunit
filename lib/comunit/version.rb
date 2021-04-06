@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
 module Comunit
-  VERSION = '0.0.210405.0'
+  VERSION = '0.0.210406.0'
 end
