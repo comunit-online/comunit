@@ -38,7 +38,7 @@ module Comunit
 
       def apply_comunit
         key = Handler::ROOT_KEY
-        entity.data[key] = data.dig(:data, key.to_sym)
+        entity.data[key] = data.dig(:meta, key.to_sym)
       end
 
       # @param [Symbol] key
