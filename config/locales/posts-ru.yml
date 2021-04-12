@@ -1,0 +1,46 @@
+ru:
+  post_count:
+    zero: "публикаций нет"
+    one: "%{count} публикация"
+    few: "%{count} публикации"
+    many: "%{count} публикаций"
+    other: "%{count} публикаций"
+  activerecord:
+    models:
+      post: "Публикация"
+      post_attachment: "Приложение к публикации"
+      post_image: "Картинка из галереи публикации"
+      post_link: "Ссылка между публикациями"
+      post_note: "Заметка в публикации"
+      post_reference: "Ссылка в публикации"
+    attributes:
+      post:
+        publication_time: "Время публикации"
+        featured: "Тема дня"
+        video: "Видео"
+        rating: "Рейтинг"
+        view_count: "Количество просмотров"
+        title: "Название"
+        source_name: "Название источника"
+        source_link: "Ссылка на источник"
+        lead: "Аннотация"
+        body: "Текст"
+      post_attachment:
+        attachment: "Приложение"
+      post_link:
+        other_post: "Другая публикация"
+        other_post_id: "Другая публикация"
+      post_note:
+        body: "Текст"
+      post_reference:
+        authors: "Авторы"
+        title: "Название"
+        url: "URL"
+        publishing_info: "Информация о публикации"
+  attributes:
+    post: "Публикация"
+    post_id: "Публикация"
+  biovision:
+    components:
+      posts:
+        name: "Публикации"
