@@ -20,5 +20,6 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :sites, concerns: %i[check toggle]
+    resources :posts, concerns: %i[check toggle]
   end
 end

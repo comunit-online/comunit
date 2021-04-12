@@ -33,6 +33,8 @@ class Post < ApplicationRecord
   include MetaTexts
   include Toggleable
 
+  LEAD_LIMIT = 5000
+  META_LIMIT = 255
   TITLE_LIMIT = 255
   URL_PATTERN = %r{https?://([^/]+)/?.*}
 

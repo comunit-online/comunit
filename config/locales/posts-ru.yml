@@ -44,3 +44,23 @@ ru:
     components:
       posts:
         name: "Публикации"
+  admin:
+    posts:
+      destroy:
+        success: "Публикация удалена"
+      edit:
+        title: "Редактирование публикации"
+        nav_text: "Редактировать"
+        heading: "Редактирование публикации"
+      index:
+        title: "Публикации, страница %{page}"
+        heading: "Публикации"
+      nav_item:
+        text: "Все публикации"
+        description: "Управление публикациями"
+      new:
+        title: "Добавление публикации"
+        nav_text: "Создать"
+        heading: "Новая публикация"
+      show:
+        title: "Публикация «%{title}»"
