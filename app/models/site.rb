@@ -56,6 +56,10 @@ class Site < ApplicationRecord
     "#{id}:#{token}"
   end
 
+  def remote?
+    !local?
+  end
+
   def text_for_link
     host
   end

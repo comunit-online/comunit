@@ -4,7 +4,6 @@ module Comunit
   module Network
     # Base entity handler for synchronization
     class Handler
-      MAIN_HOST = 'https://comunit.online'
       ROOT_KEY = 'comunit'
       SITE_KEY = 'site_id'
       SYNC_KEY = 'sync_state'

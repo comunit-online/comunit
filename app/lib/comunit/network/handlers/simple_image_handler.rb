@@ -18,7 +18,7 @@ module Comunit
         def pull_data
           apply_attributes
           apply_component
-          apply_image if site.remote?
+          apply_image if site&.remote?
         end
 
         def relationships_for_remote

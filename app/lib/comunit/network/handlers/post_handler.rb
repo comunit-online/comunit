@@ -16,7 +16,7 @@ module Comunit
         def pull_data
           apply_attributes
           apply_agent
-          apply_image
+          apply_simple_image
         end
       end
     end
