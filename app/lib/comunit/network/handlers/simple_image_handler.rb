@@ -44,15 +44,32 @@ module Comunit
         # and the only found way to assign it without carrierwave is direct SQL
         # querying.
         def bypass_carrierwave
-          entity.valid?
-          # The only validation error should be blank image
-          return if entity.errors.count > 1 || !entity.errors.key?(:image)
+          log_info 'Bypassing carrierwave'
 
-          image_name = data.attributes[:image].to_s
-          return if image_name.contains?('/')
+          image_name = data.dig(:attributes, :image).to_s
+          if image_name.include?('/')
+            log_error "Bad image name: #{image_name}"
+            return
+          end
+
+          save_without_image if entity.id.nil?
+
+          entity.update_columns(image: image_name)
+        end
+
+        def save_without_image
+          log_info 'Saving without image attached'
+          entity.valid?
+          errors = entity.errors.messages
+
+          # The only validation error should be blank image
+          if errors.count > 1 || !errors.key?(:image)
+            log_warn 'Wrong error count or key presence'
+            return
+          end
 
           entity.save(validate: false)
-          entity.update_columns(image: image_name)
+          entity.reload
         end
       end
     end
