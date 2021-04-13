@@ -1,0 +1,22 @@
+<% content_for :meta_title, t('.title', page: current_page) %>
+<% content_for :breadcrumbs do %>
+  <%= my_home_link %>
+  <span><%= t('my.posts.nav_item.text') %></span>
+<% end %>
+
+<article>
+  <div class="content-wrapper">
+    <h1><%= t('.heading') %></h1>
+
+    <nav class="entity-actions">
+      <%= create_icon(new_my_post_path) %>
+    </nav>
+
+    <%=
+      render(
+        partial: 'admin/components/posts/widgets/post_list',
+        locals: { collection: @collection }
+      )
+    %>
+  </div>
+</article>

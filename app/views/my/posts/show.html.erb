@@ -1,7 +1,7 @@
 <% content_for :meta_title, t('.title', title: @entity.title) %>
 <% content_for :breadcrumbs do %>
-  <%= admin_biovision_component_link(component_handler.component) %>
-  <%= link_to(t('admin.posts.nav_item.text'), admin_posts_path) %>
+  <%= link_to(t('my.index.index.nav_text'), my_path) %>
+  <%= link_to(t('my.posts.nav_item.text'), my_posts_path) %>
   <span><%= @entity.title %></span>
 <% end %>
 
@@ -19,14 +19,9 @@
     <%= render partial: 'shared/entity/slug', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/raw_text_field', locals: { entity: @entity, field: :lead } %>
     <%= render partial: 'shared/entity/raw_text_field', locals: { entity: @entity, field: :body } %>
-    <%= render partial: 'shared/entity/linked_entity', locals: { entity: @entity.user } %>
     <%= render partial: 'shared/entity/text_fields', locals: { entity: @entity, fields: %w[publication_time source_name source_link]} %>
     <%= render partial: 'shared/entity/meta_texts', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/uuid', locals: { entity: @entity } %>
     <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
   </dl>
-
-  <%= render(partial: 'shared/admin/toggle', locals: { entity: @entity }) %>
-
-  <%= render(partial: 'admin/components/comunit/sync_state', locals: { entity: @entity }) %>
 </article>

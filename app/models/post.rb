@@ -98,6 +98,10 @@ class Post < ApplicationRecord
     ]
   end
 
+  def self.creation_parameters
+    entity_parameters
+  end
+
   def world_url
     "/posts/#{id}-#{slug}"
   end

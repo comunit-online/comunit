@@ -64,3 +64,28 @@ ru:
         heading: "Новая публикация"
       show:
         title: "Публикация «%{title}»"
+  my:
+    posts:
+      destroy:
+        success: "Публикация удалена"
+      edit:
+        title: "Редактирование публикации"
+        nav_text: "Редактировать"
+        heading: "Редактирование публикации"
+      index:
+        title: "Мои публикации, страница %{page}"
+        heading: "Мои публикации"
+      nav_item:
+        text: "Все мои публикации"
+        description: "Управление вашими публикациями"
+      new:
+        title: "Добавление публикации"
+        nav_text: "Создать"
+        heading: "Новая публикация"
+      show:
+        title: "Моя публикация «%{title}»"
+  posts:
+    index:
+      nav_text: "Публикации"
+      title: "Публикации, страница %{page}"
+      heading: "Публикации"

@@ -1,0 +1,13 @@
+<% content_for :breadcrumbs do %>
+  <%= link_to(t('posts.index.nav_text'), posts_path) %>
+  <span><%= @entity.text_for_link %></span>
+<% end %>
+
+<article class="posts__show">
+  <figure><%= simple_image_hd(@entity) %></figure>
+  <h1><%= @entity.title %></h1>
+
+  <p class="lead"><%= @entity.lead %></p>
+
+  <div class="text"><%= simple_format(@entity.body) %></div>
+</article>

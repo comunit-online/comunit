@@ -18,6 +18,7 @@ module Comunit
         def pull_data
           apply_attributes
           apply_component
+          # Local sites share image directory, so no need to process them again
           bypass_carrierwave if data[:attributes].to_h.key?(:image)
           apply_image if site&.remote?
         end
@@ -55,6 +56,7 @@ module Comunit
           save_without_image if entity.id.nil?
 
           entity.update_columns(image: image_name)
+          log_info "#{entity.id}: Updated image column with #{image_name}"
         end
 
         def save_without_image
@@ -69,6 +71,7 @@ module Comunit
           end
 
           entity.save(validate: false)
+          # Reloading entity to have correct validation status later
           entity.reload
         end
       end

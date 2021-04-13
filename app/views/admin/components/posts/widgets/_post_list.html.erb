@@ -1,0 +1,16 @@
+<% if collection.any? %>
+  <%= paginate collection %>
+  <ul class="posts__list">
+    <% collection.each do |entity| %>
+      <li>
+        <%=
+          render(
+            partial: 'admin/components/posts/widgets/post_preview',
+            locals: { entity: entity }
+          )
+        %>
+      </li>
+    <% end %>
+  </ul>
+  <%= paginate collection %>
+<% end %>

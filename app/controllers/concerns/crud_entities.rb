@@ -102,18 +102,29 @@ module CrudEntities
     handle_http_404("Cannot find #{model_class.model_name}") if @entity.nil?
   end
 
+  def model_key
+    model_class.model_name.to_s.underscore
+  end
+
   def creation_parameters
     if model_class.respond_to?(:creation_parameters)
-      permitted = model_class.creation_parameters
-      params.require(model_class.model_name.to_s.underscore).permit(permitted)
+      explicit_creation_parameters
     else
       entity_parameters
     end
   end
 
+  def explicit_creation_parameters
+    permitted = model_class.creation_parameters
+    parameters = params.require(model_key).permit(permitted)
+    parameters.merge!(tracking_for_entity) if model_class.include?(HasTrack)
+    parameters.merge!(owner_for_entity) if model_class.include?(HasOwner)
+    parameters
+  end
+
   def entity_parameters
     permitted = model_class.entity_parameters
-    params.require(model_class.model_name.to_s.underscore).permit(permitted)
+    params.require(model_key).permit(permitted)
   end
 
   def apply_meta
