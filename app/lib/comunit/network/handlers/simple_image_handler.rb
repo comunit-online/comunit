@@ -18,6 +18,7 @@ module Comunit
         def pull_data
           apply_attributes
           apply_component
+          bypass_carrierwave if data[:attributes].to_h.key?(:image)
           apply_image if site&.remote?
         end
 
@@ -35,6 +36,23 @@ module Comunit
         def apply_component
           slug = dig_related_id(:biovision_component)
           entity.biovision_component = BiovisionComponent[slug]
+        end
+
+        # Bypass carrierwave uploader when saving
+        #
+        # If site is local, we need only file name without additional processing
+        # and the only found way to assign it without carrierwave is direct SQL
+        # querying.
+        def bypass_carrierwave
+          entity.valid?
+          # The only validation error should be blank image
+          return if entity.errors.count > 1 || !entity.errors.key?(:image)
+
+          image_name = data.attributes[:image].to_s
+          return if image_name.contains?('/')
+
+          entity.save(validate: false)
+          entity.update_columns(image: image_name)
         end
       end
     end

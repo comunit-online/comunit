@@ -20,7 +20,7 @@ module Comunit
 
       def sync_sites
         puts 'Updating sites...'
-        handler = Comunit::Network::SiteHandler.new(site)
+        handler = Handlers::SiteHandler.new(site)
         Site.order('id asc').each do |s|
           puts "#{s.host} -> #{site.host}"
           handler.push(s)
@@ -34,7 +34,7 @@ module Comunit
 
       def sync_users
         puts 'Pushing users...'
-        handler = Comunit::Network::UserHandler.new(site)
+        handler = Handlers::UserHandler.new(site)
         User.order('id asc').each do |u|
           print "\r#{u.id} #{u.screen_name} "
           handler.push(u)
@@ -44,7 +44,7 @@ module Comunit
 
       def sync_simple_images
         puts 'Pushing simple images...'
-        handler = Comunit::Network::SimpleImageHandler.new(site)
+        handler = Handlers::SimpleImageHandler.new(site)
         SimpleImage.order('id asc').each do |entity|
           print "\r#{entity.id} "
           handler.push(entity)
