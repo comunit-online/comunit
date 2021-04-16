@@ -2,32 +2,28 @@
 
 # Create tables for posts component
 class CreatePostsComponent < ActiveRecord::Migration[6.1]
+  COMPONENT = Biovision::Components::PostsComponent
+
   def up
-    create_component
+    COMPONENT.create
     create_posts unless Post.table_exists?
     create_post_attachments unless PostAttachment.table_exists?
     create_post_images unless PostImage.table_exists?
     create_post_links unless PostLink.table_exists?
     create_post_references unless PostReference.table_exists?
     create_post_notes unless PostNote.table_exists?
+    COMPONENT[nil].create_roles
   end
 
   def down
-    [
-      PostNote, PostReference, PostLink, PostImage, PostAttachment, Post
-    ].each do |model|
+    COMPONENT.dependent_models.reverse.each do |model|
       drop_table model.table_name if model.table_exists?
     end
 
-    BiovisionComponent[Biovision::Components::PostsComponent]&.destroy
+    BiovisionComponent[COMPONENT]&.destroy
   end
 
   private
-
-  def create_component
-    slug = Biovision::Components::PostsComponent.slug
-    BiovisionComponent.create(slug: slug)
-  end
 
   def create_posts
     create_table :posts, comment: 'Posts' do |t|

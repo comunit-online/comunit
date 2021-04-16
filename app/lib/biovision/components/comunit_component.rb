@@ -6,6 +6,16 @@ module Biovision
     class ComunitComponent < BaseComponent
       SETTING_MAIN_HOST = 'main_host'
 
+      def self.dependent_models
+        [Site]
+      end
+
+      def self.default_settings
+        {
+          SETTING_MAIN_HOST => 'https://sb-main.comunit.online'
+        }
+      end
+
       def self.settings_strings
         [SETTING_MAIN_HOST]
       end

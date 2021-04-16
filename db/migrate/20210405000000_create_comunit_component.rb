@@ -2,29 +2,23 @@
 
 # Create tables for Comunit
 class CreateComunitComponent < ActiveRecord::Migration[6.1]
+  COMPONENT = Biovision::Components::ComunitComponent
+
   def up
-    create_component
+    COMPONENT.create
     create_sites unless Site.table_exists?
+    COMPONENT[nil].create_roles
   end
 
   def down
-    [Site].each do |model|
+    COMPONENT.dependent_models.reverse.each do |model|
       drop_table model.table_name if model.table_exists?
     end
 
-    BiovisionComponent[Biovision::Components::ComunitComponent]&.destroy
+    BiovisionComponent[COMPONENT]&.destroy
   end
 
   private
-
-  def create_component
-    slug = Biovision::Components::ComunitComponent.slug
-    settings = {
-      Biovision::Components::ComunitComponent::SETTING_MAIN_HOST => 'https://sb-main.comunit.online'
-    }
-
-    BiovisionComponent.create(slug: slug, settings: settings)
-  end
 
   def create_sites
     create_table :sites, comment: 'Network sites' do |t|
