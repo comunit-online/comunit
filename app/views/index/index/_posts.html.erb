@@ -1,0 +1,9 @@
+<section class="frontpage-posts">
+  <h2>Публикации</h2>
+  <%=
+    render(
+      partial: 'components/posts/widgets/post_list',
+      locals: { collection: Post.order('id asc') }
+    )
+  %>
+</section>

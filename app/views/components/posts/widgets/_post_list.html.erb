@@ -1,16 +1,16 @@
 <% if collection.any? %>
-  <%= paginate collection %>
+  <%= paginate collection if collection.respond_to?(:current_page) %>
   <ul class="posts__list">
     <% collection.each do |entity| %>
       <li>
         <%=
           render(
-            partial: 'admin/components/posts/widgets/post_preview',
+            partial: 'components/posts/widgets/post_preview',
             locals: { entity: entity }
           )
         %>
       </li>
     <% end %>
   </ul>
-  <%= paginate collection %>
+  <%= paginate collection if collection.respond_to?(:current_page) %>
 <% end %>

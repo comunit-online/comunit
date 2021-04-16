@@ -4,10 +4,23 @@
 <% end %>
 
 <article class="posts__show">
-  <figure><%= simple_image_hd(@entity) %></figure>
-  <h1><%= @entity.title %></h1>
+  <div class="content-wrapper">
+    <% unless @entity.simple_image.blank? %>
+      <figure>
+        <div class="image proportional-container r-3x2">
+          <%= simple_image_hd(@entity) %>
+        </div>
+      </figure>
+    <% end %>
+    <h1><%= @entity.title %></h1>
 
-  <p class="lead"><%= @entity.lead %></p>
+    <p class="lead"><%= @entity.lead %></p>
 
-  <div class="text"><%= simple_format(@entity.body) %></div>
+    <div class="text"><%= simple_format(@entity.body) %></div>
+
+    <footer>
+      <%= entity_link(@entity.user) %>
+      <%= time_tag(@entity.publication_time) %>
+    </footer>
+  </div>
 </article>
