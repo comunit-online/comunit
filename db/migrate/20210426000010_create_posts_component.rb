@@ -121,4 +121,29 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
     add_index :post_notes, :uuid, unique: true
     add_index :post_notes, :data, using: :gin
   end
+
+  def create_post_groups
+    create_table :post_groups, comment: 'Post groups' do |t|
+      t.integer :priority, limit: 2, default: 1, null: false
+      t.boolean :visible, default: true, null: false
+      t.string :slug
+      t.string :name
+      t.string :nav_text
+    end
+  end
+
+  def create_post_group_taxa
+    create_table :post_group_taxa, comment: 'Taxa in post groups' do |t|
+      t.references :post_group, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :taxon, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.integer :priority, limit: 2, default: 1, null: false
+    end
+  end
+
+  def create_post_taxa
+    create_table :post_taxa, comment: 'Taxa in posts' do |t|
+      t.references :post, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :taxon, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+    end
+  end
 end

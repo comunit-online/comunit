@@ -9,10 +9,13 @@ ru:
     models:
       post: "Публикация"
       post_attachment: "Приложение к публикации"
+      post_group: "Группа публикаций"
+      post_group_taxon: "Таксон в группе публикаций"
       post_image: "Картинка из галереи публикации"
       post_link: "Ссылка между публикациями"
       post_note: "Заметка в публикации"
       post_reference: "Ссылка в публикации"
+      post_taxon: "Таксон в публикации"
     attributes:
       post:
         publication_time: "Время публикации"
@@ -40,6 +43,8 @@ ru:
   attributes:
     post: "Публикация"
     post_id: "Публикация"
+    post_group: "Группа публикаций"
+    post_group_id: "Группа публикаций"
   biovision:
     components:
       posts:
@@ -64,6 +69,25 @@ ru:
         heading: "Новая публикация"
       show:
         title: "Публикация «%{title}»"
+    post_groups:
+      destroy:
+        success: "Группа публикаций удалена"
+      edit:
+        title: "Редактирование группы публикаций"
+        nav_text: "Редактировать"
+        heading: "Редактирование группы публикаций"
+      index:
+        title: "Группы публикаций"
+        heading: "Группы публикаций"
+      nav_item:
+        text: "Группы публикаций"
+        description: "Управление группами публикаций"
+      new:
+        title: "Добавление группы публикаций"
+        nav_text: "Создать"
+        heading: "Новая группа публикаций"
+      show:
+        title: "Группа публикаций «%{name}»"
   my:
     posts:
       destroy:

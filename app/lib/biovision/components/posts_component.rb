@@ -5,11 +5,14 @@ module Biovision
     # Posts
     class PostsComponent < BaseComponent
       def self.dependent_models
-        [Post, PostAttachment, PostImage, PostLink, PostReference, PostNote]
+        [
+          Post, PostAttachment, PostImage, PostLink, PostReference, PostNote,
+          PostGroup, PostGroupTaxon, PostTaxon
+        ]
       end
 
       def administrative_parts
-        %w[posts]
+        %w[posts post_groups]
       end
 
       def use_images?
@@ -17,7 +20,7 @@ module Biovision
       end
 
       def crud_table_names
-        %w[posts]
+        %w[posts post_groups]
       end
     end
   end
