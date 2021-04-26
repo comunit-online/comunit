@@ -1,0 +1,29 @@
+<% content_for :meta_title, t('.title', page: current_page) %>
+<% content_for :breadcrumbs do %>
+  <%= admin_biovision_component_link(component_handler.component) %>
+  <span><%= t('admin.taxa.nav_item.text') %></span>
+<% end %>
+
+<article>
+  <h1><%= t('.heading') %></h1>
+
+  <% if component_handler.permit?('taxa.edit') %>
+    <nav class="entity-actions">
+      <%= create_icon(new_admin_taxon_path) %>
+    </nav>
+  <% end %>
+
+  <%=
+    render(
+      partial: 'admin/widgets/quick_search',
+      locals: { endpoint: search_admin_taxa_url }
+    )
+  %>
+
+  <%=
+    render(
+      partial: 'shared/admin/list_with_priority',
+      locals: { collection: @collection, handler: component_handler }
+    )
+  %>
+</article>

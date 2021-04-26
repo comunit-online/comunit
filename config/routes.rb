@@ -13,6 +13,10 @@ Rails.application.routes.draw do
     post :priority, on: :member, defaults: { format: :json }
   end
 
+  concern :search do
+    get :search, on: :collection
+  end
+
   root 'index#index'
 
   get 'comunit/:table_name/:uuid' => 'network#show', as: nil
@@ -24,8 +28,15 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :sites, concerns: %i[check toggle]
-    resources :posts, concerns: %i[check toggle]
+    # Comunit component
+    resources :sites, concerns: %i[check search toggle]
+
+    # Posts component
+    resources :posts, concerns: %i[check search toggle]
+    resources :post_groups, concerns: %i[check toggle]
+
+    # Taxonomy component
+    resources :taxa, concerns: %i[check search toggle]
   end
 
   namespace :my do

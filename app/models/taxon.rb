@@ -35,8 +35,10 @@ class Taxon < ApplicationRecord
   validates_presence_of :name
   validates_uniqueness_of :slug, scope: :parent_id
 
+  scope :ordered_by_name, -> { order('name asc') }
   scope :visible, -> { where(visible: true) }
-  scope :list_for_administration, ->(v = nil) { where(parent_id: v&.id).ordered_by_priority }
+  scope :list_for_administration, ->(v = nil) { where(parent_id: v).ordered_by_priority }
+  scope :seacrh, ->(q) { where('name ilike ?', "#{q}%") unless q.blank? }
 
   # @param [Taxon] entity
   def self.siblings(entity)
@@ -53,5 +55,9 @@ class Taxon < ApplicationRecord
 
   def text_for_link
     nav_text.blank? ? name : nav_text
+  end
+
+  def long_name
+    (parents.map(&:name) + [text_for_link]).join('/')
   end
 end

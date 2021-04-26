@@ -26,6 +26,11 @@ ru:
         heading: "Новый таксон"
       show:
         title: "Таксон «%{name}»"
+      entity:
+        add_child:
+          heading: "Добавить дочерний таксон"
+        children:
+          heading: "Дочерние таксоны"
   biovision:
     components:
       taxonomy:

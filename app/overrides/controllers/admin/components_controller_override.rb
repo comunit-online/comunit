@@ -3,7 +3,7 @@
 # Overriding administrative components controller
 Admin::ComponentsController.class_eval do
   def create_image
-    if @handler.allow?
+    if @handler.permit?('simple_images.create')
       @entity = @handler.component.simple_images.new(image_parameters)
       if @entity.save
         Comunit::Network::Handler.sync(@entity)

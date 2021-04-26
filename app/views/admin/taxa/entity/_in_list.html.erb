@@ -1,0 +1,17 @@
+<figure class="image"><%= simple_image_preview(entity) %></figure>
+<div class="data">
+  <div><%= admin_entity_link(entity) %></div>
+  <div class="info"><%= entity.name %></div>
+  <div class="secondary info"><%= t(:object_count, count: entity.object_count) %></div>
+  <div class="secondary info"><%= entity.uuid %></div>
+
+  <%= render(partial: 'shared/admin/toggle', locals: { entity: entity }) %>
+
+  <% if local_assigns[:handler] && handler.permit?('edit', entity) %>
+    <div class="entity-actions">
+      <%= edit_icon(entity) %>
+      <%= render(partial: 'shared/admin/priority', locals: { entity: entity }) %>
+      <%= destroy_icon(entity) %>
+    </div>
+  <% end %>
+</div>

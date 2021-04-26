@@ -1,0 +1,53 @@
+<% content_for :meta_title, t('.title', name: @entity.name) %>
+<% content_for :breadcrumbs do %>
+  <%= admin_biovision_component_link(component_handler.component) %>
+  <%= link_to(t('admin.taxa.nav_item.text'), admin_taxa_path) %>
+  <% @entity.parents.each do |parent| %>
+    <%= admin_entity_link(parent) %>
+  <% end %>
+  <span><%= @entity.name %></span>
+<% end %>
+
+<article>
+  <h1><%= @entity.name %></h1>
+
+  <% if component_handler.permit?('edit', @entity) %>
+    <nav class="entity-actions">
+      <%= edit_icon(@entity) %>
+      <%= destroy_icon(@entity) %>
+    </nav>
+  <% end %>
+
+  <dl class="fields">
+    <%= render partial: 'shared/entity/parent', locals: { entity: @entity } %>
+    <%= render partial: 'shared/entity/text_fields', locals: { entity: @entity, fields: %w[name slug nav_text] } %>
+    <%= render partial: 'shared/entity/simple_image', locals: { entity: @entity } %>
+    <%= render partial: 'shared/entity/uuid', locals: { entity: @entity } %>
+    <%= render partial: 'shared/entity/timestamps', locals: { entity: @entity } %>
+    <%= render partial: 'shared/entity/tree_caches', locals: { entity: @entity } %>
+  </dl>
+
+  <%= render(partial: 'shared/admin/toggle', locals: { entity: @entity }) %>
+
+  <%= render(partial: 'admin/components/comunit/sync_state', locals: { entity: @entity }) %>
+
+
+  <%=
+    render(
+      partial: 'admin/taxa/entity/children',
+      locals: {
+        collection: @entity.class.list_for_administration(@entity.id),
+        handler: component_handler
+      }
+    )
+  %>
+
+  <% if component_handler.permit?('edit', @entity) %>
+    <%=
+      render(
+        partial: 'admin/taxa/entity/add_child',
+        locals: { entity: @entity.child_items.new }
+      )
+    %>
+  <% end %>
+</article>
