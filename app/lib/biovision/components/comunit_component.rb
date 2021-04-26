@@ -28,6 +28,14 @@ module Biovision
       def self.main_host
         self[nil].settings[SETTING_MAIN_HOST]
       end
+
+      def administrative_parts
+        %w[sites]
+      end
+
+      def use_images?
+        true
+      end
     end
   end
 end

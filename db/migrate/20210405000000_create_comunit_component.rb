@@ -2,21 +2,7 @@
 
 # Create tables for Comunit
 class CreateComunitComponent < ActiveRecord::Migration[6.1]
-  COMPONENT = Biovision::Components::ComunitComponent
-
-  def up
-    COMPONENT.create
-    create_sites unless Site.table_exists?
-    COMPONENT[nil].create_roles
-  end
-
-  def down
-    COMPONENT.dependent_models.reverse.each do |model|
-      drop_table model.table_name if model.table_exists?
-    end
-
-    BiovisionComponent[COMPONENT]&.destroy
-  end
+  include Biovision::Migrations::ComponentMigration
 
   private
 

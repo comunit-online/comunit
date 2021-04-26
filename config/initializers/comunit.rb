@@ -11,3 +11,7 @@ Rails.application.configure do
     end
   end
 end
+
+ActiveSupport::Inflector.inflections(:en) do |inflect|
+  inflect.irregular 'taxon', 'taxa'
+end
