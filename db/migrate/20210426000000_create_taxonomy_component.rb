@@ -28,6 +28,13 @@ class CreateTaxonomyComponent < ActiveRecord::Migration[6.1]
     add_foreign_key :taxa, :taxa, column: :parent_id, on_update: :cascade, on_delete: :cascade
   end
 
+  def create_taxon_components
+    create_table :taxon_components, comment: 'Taxa available in components' do |t|
+      t.references :taxon, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :biovision_component, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+    end
+  end
+
   def create_taxon_users
     create_table :taxon_users, comment: 'Taxa available to users' do |t|
       t.references :taxon, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }

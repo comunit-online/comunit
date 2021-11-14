@@ -146,4 +146,19 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
       t.references :taxon, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
     end
   end
+
+  def create_authors
+    create_table :authors, comment: 'Post authors' do |t|
+      t.references :user, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :simple_image, foreign_key: { on_update: :cascade, on_delete: :nullify }
+      t.boolean :visible, default: true, null: false
+      t.string :surname
+      t.string :name
+      t.string :patronymic
+      t.string :title
+      t.text :about
+    end
+
+    add_index :authors, %i[surname name patronymic]
+  end
 end

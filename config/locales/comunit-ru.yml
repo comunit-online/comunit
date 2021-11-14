@@ -5,9 +5,7 @@ ru:
     attributes:
       site:
         active: "Активный"
-        local: "Локальный"
         version: "Версия"
-        name: "Название"
         host: "Хост"
         token: "Жетон"
   network:

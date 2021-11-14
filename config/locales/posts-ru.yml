@@ -7,6 +7,7 @@ ru:
     other: "%{count} публикаций"
   activerecord:
     models:
+      author: "Автор"
       post: "Публикация"
       post_attachment: "Приложение к публикации"
       post_group: "Группа публикаций"
@@ -17,6 +18,11 @@ ru:
       post_reference: "Ссылка в публикации"
       post_taxon: "Таксон в публикации"
     attributes:
+      author:
+        name: "Имя"
+        patronymic: "Отчество"
+        surname: "Фамилия"
+        title: "Звание"
       post:
         publication_time: "Время публикации"
         featured: "Тема дня"

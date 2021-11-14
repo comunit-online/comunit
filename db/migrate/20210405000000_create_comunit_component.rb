@@ -12,9 +12,7 @@ class CreateComunitComponent < ActiveRecord::Migration[6.1]
       t.references :simple_image, foreign_key: { on_update: :cascade, on_delete: :nullify }
       t.timestamps
       t.boolean :active, default: false, null: false
-      t.boolean :local, default: true, null: false
       t.integer :version, limit: 2, default: 1, null: false
-      t.string :name
       t.string :host
       t.string :token
       t.jsonb :data, default: {}, null: false
