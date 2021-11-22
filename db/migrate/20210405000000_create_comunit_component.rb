@@ -13,6 +13,7 @@ class CreateComunitComponent < ActiveRecord::Migration[6.1]
       t.timestamps
       t.boolean :active, default: false, null: false
       t.integer :version, limit: 2, default: 1, null: false
+      t.integer :locality, limit: 2, default: 1, null: false
       t.string :host
       t.string :token
       t.jsonb :data, default: {}, null: false

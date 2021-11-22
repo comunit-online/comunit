@@ -5,9 +5,10 @@ ru:
     attributes:
       site:
         active: "Активный"
-        version: "Версия"
         host: "Хост"
+        locality: "Локальность"
         token: "Жетон"
+        version: "Версия"
   network:
     signature:
       unknown_site: "Неизвестный сайт в подписи"
