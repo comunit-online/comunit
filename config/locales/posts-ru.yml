@@ -17,6 +17,7 @@ ru:
       post_note: "Заметка в публикации"
       post_reference: "Ссылка в публикации"
       post_taxon: "Таксон в публикации"
+      post_user: "Доступ пользователя к платной публикации"
     attributes:
       author:
         name: "Имя"
@@ -24,16 +25,17 @@ ru:
         surname: "Фамилия"
         title: "Звание"
       post:
-        publication_time: "Время публикации"
-        featured: "Тема дня"
-        video: "Видео"
-        rating: "Рейтинг"
-        view_count: "Количество просмотров"
-        title: "Название"
-        source_name: "Название источника"
-        source_link: "Ссылка на источник"
-        lead: "Аннотация"
         body: "Текст"
+        featured: "Тема дня"
+        lead: "Аннотация"
+        paywall: "Платный доступ"
+        publication_time: "Время публикации"
+        rating: "Рейтинг"
+        source_link: "Ссылка на источник"
+        source_name: "Название источника"
+        title: "Название"
+        video: "Видео"
+        view_count: "Количество просмотров"
       post_attachment:
         attachment: "Приложение"
       post_link:

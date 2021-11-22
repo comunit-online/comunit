@@ -7,7 +7,7 @@ module Biovision
       def self.dependent_models
         [
           Post, PostAttachment, PostImage, PostLink, PostReference, PostNote,
-          PostGroup, PostGroupTaxon, PostTaxon
+          PostGroup, PostGroupTaxon, PostTaxon, PostUser
         ]
       end
 
@@ -19,8 +19,12 @@ module Biovision
         true
       end
 
+      def use_files?
+        true
+      end
+
       def crud_table_names
-        %w[posts post_groups]
+        %w[posts post_groups simple_images uploaded_files]
       end
     end
   end

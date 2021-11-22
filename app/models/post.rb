@@ -10,6 +10,7 @@
 #   ip_address_id [IpAddress], optional
 #   featured [boolean]
 #   lead [text], optional
+#   paywall [Boolean]
 #   publication_time [datetime]
 #   rating [float]
 #   simple_image_id [SimpleImage], optional
@@ -38,7 +39,7 @@ class Post < ApplicationRecord
   TITLE_LIMIT = 255
   URL_PATTERN = %r{https?://([^/]+)/?.*}
 
-  toggleable :visible, :featured
+  toggleable :visible, :featured, :paywall
   paginates_per 12
 
   belongs_to :user, optional: true
@@ -93,9 +94,9 @@ class Post < ApplicationRecord
 
   def self.entity_parameters
     %i[
-      body featured lead publication_time rating simple_image_id
-      source_name source_link title video visible
-    ]
+      body lead publication_time rating simple_image_id source_name source_link
+      title video
+    ] + toggleable_attributes
   end
 
   def self.creation_parameters

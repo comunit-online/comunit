@@ -15,6 +15,7 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
       t.references :ip_address, foreign_key: { on_update: :cascade, on_delete: :nullify }
       t.timestamps
       t.datetime :publication_time
+      t.boolean :paywall, default: false, null: false
       t.boolean :visible, default: true, null: false
       t.boolean :featured, default: false, null: false
       t.boolean :video, default: false, null: false
@@ -43,7 +44,7 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
           end
         $$ language 'plpgsql' immutable;
     )
-    execute "create index posts_search_idx on posts using gin(posts_tsvector(title, lead, body));"
+    execute %(create index posts_search_idx on posts using gin(posts_tsvector(title, lead, body));)
 
     add_index :posts, :uuid, unique: true
     add_index :posts, :created_at
@@ -160,5 +161,12 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
     end
 
     add_index :authors, %i[surname name patronymic]
+  end
+
+  def create_post_users
+    create_table :post_users, comment: 'Posts behind paywall visible to users' do |t|
+      t.references :post, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :user, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+    end
   end
 end
