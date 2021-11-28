@@ -34,7 +34,7 @@ module Comunit
       # @param [String] url
       # @param [Hash] data
       def rest_request(verb, url, data)
-        if Rails.env.production?
+        if Rails.env.production? && !ENV['COMUNIT_NO_SYNC']
           rest_production(verb, url, JSON.generate(data))
         else
           log_info("[#{Rails.env}]: #{verb} #{url}", 200)
