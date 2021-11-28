@@ -54,10 +54,10 @@ class CreatePostsComponent < ActiveRecord::Migration[6.1]
   def create_post_attachments
     create_table :post_attachments, comment: 'Post attachments' do |t|
       t.uuid :uuid, null: false
-      t.references :post, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade  }
+      t.references :post, null: false, foreign_key: { on_update: :cascade, on_delete: :cascade }
+      t.references :uploaded_file, foreign_key: { on_update: :cascade, on_delete: :nullify }
       t.boolean :visible
       t.string :name
-      t.string :attachment
       t.jsonb :data, default: {}, null: false
     end
 
