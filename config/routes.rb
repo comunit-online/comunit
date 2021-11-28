@@ -17,7 +17,9 @@ Rails.application.routes.draw do
     get :search, on: :collection
   end
 
-  root 'index#index'
+  concern :stories do
+    post 'stories/:slug' => :story, on: :collection, as: :story
+  end
 
   get 'comunit/:table_name/:uuid' => 'network#show', as: nil
   put 'comunit/:table_name/:uuid' => 'network#pull', as: nil
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
     get '/' => :index, as: :posts
     get ':id-:slug' => :show, as: :post, constraints: { id: /\d+/ }
   end
+  resources :authors, only: %i[index show]
 
   namespace :admin do
     # Comunit component
@@ -34,6 +37,7 @@ Rails.application.routes.draw do
     # Posts component
     resources :posts, concerns: %i[check search toggle]
     resources :post_groups, concerns: %i[check toggle]
+    resources :authors, concerns: %i[check toggle]
 
     # Taxonomy component
     resources :taxa, concerns: %i[check search toggle]

@@ -1,0 +1,28 @@
+<% content_for :meta_title, t('.title', name: @entity.text_for_link) %>
+<% content_for :breadcrumbs do %>
+  <%= link_to(t('authors.index.nav_text'), authors_path) %>
+  <span><%= @entity.text_for_link %></span>
+<% end %>
+
+<article class="posts__author">
+  <div class="content-wrapper">
+    <h1><%= @entity.full_name %></h1>
+
+    <% if component_handler.permit?('edit', @entity) %>
+      <nav class="entity-actions">
+        <%= gear_icon(admin_author_path(id: @entity.id)) %>
+        <%= edit_icon(edit_admin_author_path(id: @entity.id)) %>
+      </nav>
+    <% end %>
+
+    <%= render partial: 'authors/entity/info', locals: { entity: @entity } %>
+    <% if @collection.any? %>
+      <%=
+        render(
+          partial: 'authors/entity/posts',
+          locals: { collection: @collection }
+        )
+      %>
+    <% end %>
+  </div>
+</article>

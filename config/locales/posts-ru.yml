@@ -20,6 +20,7 @@ ru:
       post_user: "Доступ пользователя к платной публикации"
     attributes:
       author:
+        about: "Об авторе"
         name: "Имя"
         patronymic: "Отчество"
         surname: "Фамилия"
@@ -96,6 +97,13 @@ ru:
         heading: "Новая группа публикаций"
       show:
         title: "Группа публикаций «%{name}»"
+    authors:
+      nav_item:
+        text: "Авторы"
+        description: "Управление списком авторов"
+      index:
+        title: "Авторы"
+        heading: "Авторы"
   my:
     posts:
       destroy:
@@ -121,3 +129,13 @@ ru:
       nav_text: "Публикации"
       title: "Публикации, страница %{page}"
       heading: "Публикации"
+  authors:
+    index:
+      title: "Наши авторы"
+      nav_text: "Наши авторы"
+      heading: "Наши авторы"
+    entity:
+      posts:
+        heading: "Публикации"
+    show:
+      title: "Автор %{name}"

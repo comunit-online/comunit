@@ -1,11 +1,11 @@
 <% if collection.any? %>
   <%= paginate collection if collection.respond_to?(:current_page) %>
-  <ul class="posts__list card-list">
+  <ul class="posts__author-list card-list">
     <% collection.each do |entity| %>
       <li>
         <%=
           render(
-            partial: 'components/posts/widgets/post_preview',
+            partial: 'components/posts/widgets/author_preview',
             locals: { entity: entity }
           )
         %>
@@ -13,4 +13,6 @@
     <% end %>
   </ul>
   <%= paginate collection if collection.respond_to?(:current_page) %>
+<% else %>
+  <%= render 'shared/nothing_found' %>
 <% end %>

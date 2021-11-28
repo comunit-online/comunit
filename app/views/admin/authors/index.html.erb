@@ -1,0 +1,18 @@
+<% content_for :meta_title, t('.title') %>
+<% content_for :breadcrumbs do %>
+  <%= admin_biovision_component_link(component_handler.component) %>
+  <span><%= t('admin.authors.nav_item.text') %></span>
+<% end %>
+
+<article>
+  <h1><%= t('.heading') %></h1>
+
+  <nav class="entity-actions">
+    <%= world_icon(authors_path) %>
+    <% if component_handler.permit?("#{controller_name}.edit") %>
+      <%= create_icon(new_admin_author_path) %>
+    <% end %>
+  </nav>
+
+  <%= entity_list(@collection) %>
+</article>

@@ -1,0 +1,24 @@
+<%= form_with(**Biovision::Components::BaseComponent.form_options(entity)) do |f| %>
+  <%= render partial: 'shared/list_of_errors', locals: { entity: entity } %>
+
+  <dl class="fields">
+    <%= entity_form_block(f, :simple_image) %>
+    <%=
+      render(
+        partial: 'shared/forms/fields',
+        locals: {
+          f: f,
+          fields: %w[surname name patronymic title about]
+        }
+      )
+    %>
+    <%= entity_form_block(f, :entity_flags) %>
+  </dl>
+
+  <%= render 'shared/forms/state_container' %>
+
+  <div class="buttons">
+    <%= hidden_field_tag :entity_id, entity.id %>
+    <%= f.button t(:save), class: 'button button-save' %>
+  </div>
+<% end %>

@@ -7,12 +7,12 @@ module Biovision
       def self.dependent_models
         [
           Post, PostAttachment, PostImage, PostLink, PostReference, PostNote,
-          PostGroup, PostGroupTaxon, PostTaxon, PostUser
+          PostGroup, PostGroupTaxon, PostTaxon, PostUser, Author
         ]
       end
 
       def administrative_parts
-        %w[posts post_groups]
+        [Post, PostGroup, Author].map(&:table_name)
       end
 
       def use_images?

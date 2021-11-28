@@ -1,0 +1,17 @@
+<figure class="image"><%= simple_image_preview(entity) %></figure>
+<div class="data">
+  <div><%= admin_entity_link(entity) %></div>
+  <% unless entity.user.blank? %>
+    <div class="info"><%= admin_entity_link(entity.user) %></div>
+  <% end %>
+
+  <%= entity_toggle(entity) %>
+
+  <div class="entity-actions">
+    <%= world_icon(entity) %>
+    <% if local_assigns[:handler]&.permit?('edit', entity) %>
+      <%= edit_icon(entity) %>
+      <%= destroy_icon(entity) %>
+    <% end %>
+  </div>
+</div>

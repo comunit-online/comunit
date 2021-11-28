@@ -3,33 +3,32 @@
 # Post attachment
 #
 # Attributes:
-#   attachment [string]
 #   data [jsonb]
 #   name [string], optional
 #   post_id [Post]
+#   uploaded_file_id [UploadedFile]
 #   uuid [uuid]
 #   visible [boolean]
 class PostAttachment < ApplicationRecord
   include BelongsToSite
   include Checkable
+  include HasUploadedFile
   include HasUuid
   include Toggleable
 
   NAME_LIMIT = 120
 
   toggleable :visible
-  mount_uploader :file, SimpleFileUploader
 
   belongs_to :post
 
   validates_length_of :name, maximum: NAME_LIMIT
-  validates_presence_of :file
 
-  scope :ordered_for_list, -> { order('name asc, file asc') }
+  scope :ordered_for_list, -> { order(:name) }
   scope :list_for_administration, -> { ordered_for_list }
 
   def self.entity_parameters
-    %i[file name]
+    %i[name uploaded_file_id]
   end
 
   def name!

@@ -1,0 +1,16 @@
+<section class="info">
+  <figure class="posts__author-card">
+    <div class="image">
+      <%= simple_image_small(entity) %>
+    </div>
+    <figcaption>
+      <div class="name"><%= entity.full_name %></div>
+      <div class="title"><%= entity.title %></div>
+    </figcaption>
+  </figure>
+  <div class="text">
+    <h2><%= entity.class.human_attribute_name(:about) %></h2>
+
+    <%= simple_format(entity.about) %>
+  </div>
+</section>
