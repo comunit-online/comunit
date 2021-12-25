@@ -1,0 +1,14 @@
+.image-preview {
+  label {
+    display: flex;
+    max-width: 32rem;
+    width: 100%;
+  }
+
+  img {
+    box-shadow: var(--block-shadow);
+    height: 100%;
+    object-fit: contain;
+    width: 100%;
+  }
+}

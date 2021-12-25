@@ -26,6 +26,13 @@ module Biovision
       def crud_table_names
         %w[posts post_groups simple_images uploaded_files]
       end
+
+      def role_tree
+        result = super
+        result['posts'] << 'create'
+
+        result
+      end
     end
   end
 end

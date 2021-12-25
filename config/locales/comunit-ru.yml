@@ -37,3 +37,8 @@ ru:
       comunit:
         sync_state:
           heading: "Состояние синхронизации"
+  components:
+    comunit:
+      forms:
+        image:
+          new_image: "Загрузить новое"

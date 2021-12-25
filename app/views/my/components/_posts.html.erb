@@ -1,0 +1,15 @@
+<section class="my__component">
+  <h2><%= t('biovision.components.posts.name') %></h2>
+
+  <% if component_handler.permit?('posts.create') %>
+    <nav>
+      <%=
+        link_to(
+          t('my.posts.new.nav_text'),
+          new_my_post_path,
+          class: 'button button-primary'
+        )
+      %>
+    </nav>
+  <% end %>
+</section>

@@ -1,0 +1,30 @@
+<script src="https://cdn.ckeditor.com/ckeditor5/31.0.0/classic/ckeditor.js"></script>
+<script>
+    function attachCKEditor(editor) {
+        editor.required = false;
+        options = {
+            image: {
+                toolbar: ['imageTextAlternative']
+            },
+            ckfinder: {
+                uploadUrl: editor.dataset.uploadUrl
+            }
+        }
+        ClassicEditor.create(editor, options).catch(e => console.error(e));
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll("button.js-wysiwyg-toggle").forEach(function (button) {
+            button.addEventListener("click", function (event) {
+                const button = event.target;
+                button.classList.add("hidden");
+                const editor = document.getElementById(button.getAttribute("data-element"));
+                if (editor) {
+                    attachCKEditor(editor)
+                }
+            });
+        });
+
+        document.querySelectorAll('[data-wysiwyg]').forEach(attachCKEditor);
+    });
+</script>
